@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+.dashboard-container {
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: orange;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  height: 60px;
+  position: relative;
+}
+
+.main-container {
+  display: flex;
+}
+
+.sidebar {
+  background-color: blue;
+  border-right: 1px solid #eee;
+  width: 20%;
+  height: calc(100vh - 60px);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 16px;
+}
+
+.content-container {
+  background-color: white;
+  width: 80%;
+  height: calc(100vh - 60px);
+  overflow: auto;
+}
+
+.inner-container {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 20px;
+  overflow: auto;
+}
