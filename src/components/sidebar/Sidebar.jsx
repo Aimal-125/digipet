@@ -6,7 +6,7 @@ export default function Sidebar() {
 
   const currentPathname = location.pathname;
 
-  const roles = ["admin"];
+  const roles = ["admin", "doctor", "user"];
 
   const accessibleSidebarItems = sidebarItems.filter((item) =>
     item.requiredRoles.some((requiredRole) => roles.includes(requiredRole))

@@ -1,16 +1,28 @@
 import { createBrowserRouter } from "react-router";
 
-import LoginPage from "../components/login/Login";
+import { lazy, Suspense } from "react";
 
-import NotFoundPage from "../pages/Notfound";
+import Loader from "../components/global/loaders/Loader";
 
-import App from "../App";
+import Spinner from "../components/global/loaders/Spinner";
 
 import ProtectedRoute from "./ProtectedRoute";
 
-import DashboardPage from "../components/dashboard/Dashboard";
-import PetParentsPage from "../components/pet-parents/PetParents";
 import RoleProtectedRoute from "./RoleProtectedRoute";
+
+const App = Loader(lazy(() => import("../App")));
+
+const LoginPage = Loader(lazy(() => import("../components/login/Login")));
+
+const NotFoundPage = Loader(lazy(() => import("../pages/Notfound")));
+
+const DashboardPage = lazy(() => import("../components/dashboard/Dashboard"));
+
+const PetParentsPage = lazy(() =>
+  import("../components/pet-parents/PetParents")
+);
+
+const DoctorsPage = lazy(() => import("../components/doctors/Doctors"));
 
 const router = createBrowserRouter([
   {
@@ -29,7 +41,11 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: (
           <RoleProtectedRoute
-            element={<DashboardPage />}
+            element={
+              <Suspense fallback={<Spinner />}>
+                <DashboardPage />
+              </Suspense>
+            }
             allowedRoles={["admin"]}
           />
         ),
@@ -38,8 +54,25 @@ const router = createBrowserRouter([
         path: "/pet-parents",
         element: (
           <RoleProtectedRoute
-            element={<PetParentsPage />}
-            allowedRoles={["admin"]}
+            element={
+              <Suspense fallback={<Spinner />}>
+                <PetParentsPage />
+              </Suspense>
+            }
+            allowedRoles={["doctor", "user"]}
+          />
+        ),
+      },
+      {
+        path: "/doctors",
+        element: (
+          <RoleProtectedRoute
+            element={
+              <Suspense fallback={<Spinner />}>
+                <DoctorsPage />
+              </Suspense>
+            }
+            allowedRoles={["doctor", "user"]}
           />
         ),
       },

@@ -1,0 +1,84 @@
+.login-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-container {
+  border-radius: 7px;
+  width: 700px;
+  height: 500px;
+  box-shadow: 0 0 5px #ccc;
+  display: flex;
+}
+
+.login-box-1 {
+  border-radius: 7px 0 0 7px;
+  background: linear-gradient(#196498, #01caec);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logo-text {
+  font-size: 60px;
+  font-style: italic;
+  font-weight: bold;
+  font-family: "Josefin sans", sans-serif;
+}
+
+.login-box-2 {
+  border-radius: 0 7px 7px 0;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media screen and (max-width: 850px) {
+  .login-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-box-1 {
+    height: 350px;
+    border-radius: 7px 7px 0 0;
+  }
+
+  .login-box-2 {
+    height: 100%;
+    border-radius: 0 0 7px 7px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .login-box-2 {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .login-logo-text {
+    font-size: 40px;
+  }
+}

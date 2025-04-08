@@ -9,6 +9,12 @@ export const sidebarItems = [
     id: 2,
     path: "/pet-parents",
     label: "Pet Parents",
-    requiredRoles: ["admin"],
+    requiredRoles: ["doctor", "user"],
+  },
+  {
+    id: 3,
+    path: "/doctors",
+    label: "Doctors",
+    requiredRoles: ["doctor", "user"],
   },
 ];
