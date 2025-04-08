@@ -1,0 +1,30 @@
+.logout-menu-div {
+  display: flex;
+  position: relative;
+}
+
+.logout-menu {
+  background-color: white;
+  border-radius: 7px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  box-shadow: 0 0 5px #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.logout-menu div:not(:last-of-type) {
+  border-bottom: 1px solid black;
+}
+
+.logout-menu-btn {
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}

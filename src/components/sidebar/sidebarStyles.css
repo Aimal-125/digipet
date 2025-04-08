@@ -1,0 +1,84 @@
+.sidebar-link {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  font-weight: 600;
+}
+
+.active-link {
+  background-color: #252c62;
+  color: white;
+}
+
+.sidebar-icon-span {
+  width: 22px;
+}
+
+.sidebar-icon-span img {
+  width: 100%;
+  height: 100%;
+}
+
+.active-icon {
+  filter: invert(100%) brightness(200%) contrast(100%);
+}
+
+.highlight-line {
+  display: inline-flex;
+  width: 9px;
+  height: 1px;
+  background-color: white;
+  border-radius: 0 7px 7px 0;
+}
+
+.highlight-line-active {
+  display: inline-flex;
+  width: 9px;
+  height: 100%;
+  background-color: #252c62;
+  border-radius: 0 7px 7px 0;
+  transition: height 0.2s;
+}
+
+/* sidebar scrollbar css styles start */
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+}
+
+.sidebar:hover::-webkit-scrollbar-thumb,
+.sidebar:active::-webkit-scrollbar-thumb,
+.sidebar.scrolling::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Show scrollbar when scrolling or hovered */
+.sidebar:hover::-webkit-scrollbar,
+.sidebar.scrolling::-webkit-scrollbar {
+  opacity: 1;
+}
+
+/* Firefox adjustments for JavaScript approach */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.sidebar:hover,
+.sidebar.scrolling {
+  scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
+}
+
+/* sidebar scrollbar css styles end */
