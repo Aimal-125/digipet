@@ -11,7 +11,7 @@ body {
   flex-direction: column;
 }
 
-.navbar {
+.desktop-navbar {
   background-color: white;
   border-bottom: 1px solid #eee;
   display: flex;
@@ -35,6 +35,14 @@ body {
   flex-direction: column;
   gap: 0;
   padding: 0;
+  transition: width 0.2s;
+}
+
+.sidebar-collapse {
+  width: 5%;
+  padding: 10px 0;
+  align-items: center;
+  gap: 10px;
 }
 
 .content-container {
@@ -42,6 +50,11 @@ body {
   width: 80%;
   height: calc(100vh - 60px);
   overflow: auto;
+  transition: width 0.2s;
+}
+
+.content-container-expand {
+  width: 95%;
 }
 
 .inner-container {
@@ -52,4 +65,14 @@ body {
   height: 100%;
   padding: 20px;
   overflow: auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+
+  .content-container {
+    width: 100%;
+  }
 }

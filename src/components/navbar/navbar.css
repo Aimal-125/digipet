@@ -1,0 +1,140 @@
+.mobile-navbar {
+  display: none;
+}
+
+.mobile-menu-sidebar {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .desktop-navbar {
+    display: none;
+  }
+
+  .mobile-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 60px;
+    position: relative;
+  }
+
+  .mobile-menu {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+  }
+
+  .mobile-menu-btn-div {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .mobile-menu-btn {
+    border: 1px solid transparent;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0 5px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .mobile-menu-btn span {
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background-color: #252c62;
+    border-radius: 5px;
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform-origin: 0% 50%;
+    -webkit-transform-origin: 0% 50%;
+    transition: transform 0.15s;
+  }
+
+  .mobile-menu-btn.mobile-menu-active .span-1 {
+    background-color: #252c62;
+    position: absolute;
+    width: 25px;
+    top: 6px;
+    left: 4px;
+    transform: rotate(35deg);
+    -webkit-transform: rotate(35deg);
+    transform-origin: 0% 50%;
+    -webkit-transform-origin: 0% 50%;
+  }
+
+  .mobile-menu-btn.mobile-menu-active .span-2 {
+    display: none;
+  }
+
+  .mobile-menu-btn.mobile-menu-active .span-3 {
+    background-color: #252c62;
+    position: absolute;
+    width: 25px;
+    bottom: 6px;
+    left: 4px;
+    transform: rotate(-35deg);
+    -webkit-transform: rotate(-35deg);
+    transform-origin: 0% 50%;
+    -webkit-transform-origin: 0% 50%;
+  }
+
+  .mobile-menu-sidebar {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    display: flex;
+  }
+
+  .mobile-sidebar {
+    background-color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 350px;
+    height: 100%;
+  }
+
+  .highlight-line-mobile-sidebar {
+    display: inline-flex;
+    width: 9px;
+    height: 1px;
+    background-color: white;
+    border-radius: 0 7px 7px 0;
+  }
+
+  .highlight-line-active-mobile-sidebar {
+    display: inline-flex;
+    width: 9px;
+    height: 55px;
+    background-color: #252c62;
+    border-radius: 0 7px 7px 0;
+    transition: height 0.2s;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .mobile-sidebar {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .mobile-sidebar {
+    width: 100%;
+  }
+}

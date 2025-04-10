@@ -24,60 +24,65 @@ const PetParentsPage = lazy(() =>
 
 const DoctorsPage = lazy(() => import("../components/doctors/Doctors"));
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "*",
+      element: <NotFoundPage />,
+    },
+    {
+      path: "/login",
+      element: <LoginPage />,
+    },
+    {
+      path: "/",
+      element: <ProtectedRoute element={<App />} />,
+      children: [
+        {
+          path: "/dashboard",
+          element: (
+            <RoleProtectedRoute
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <DashboardPage />
+                </Suspense>
+              }
+              allowedRoles={["admin"]}
+            />
+          ),
+        },
+        {
+          path: "/pet-parents",
+          element: (
+            <RoleProtectedRoute
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <PetParentsPage />
+                </Suspense>
+              }
+              allowedRoles={["doctor", "user"]}
+            />
+          ),
+        },
+        {
+          path: "/doctors",
+          element: (
+            <RoleProtectedRoute
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <DoctorsPage />
+                </Suspense>
+              }
+              allowedRoles={["doctor", "user"]}
+            />
+          ),
+        },
+      ],
+    },
+  ],
   {
-    path: "*",
-    element: <NotFoundPage />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/",
-    element: <ProtectedRoute element={<App />} />,
-    children: [
-      {
-        path: "/dashboard",
-        element: (
-          <RoleProtectedRoute
-            element={
-              <Suspense fallback={<Spinner />}>
-                <DashboardPage />
-              </Suspense>
-            }
-            allowedRoles={["admin"]}
-          />
-        ),
-      },
-      {
-        path: "/pet-parents",
-        element: (
-          <RoleProtectedRoute
-            element={
-              <Suspense fallback={<Spinner />}>
-                <PetParentsPage />
-              </Suspense>
-            }
-            allowedRoles={["doctor", "user"]}
-          />
-        ),
-      },
-      {
-        path: "/doctors",
-        element: (
-          <RoleProtectedRoute
-            element={
-              <Suspense fallback={<Spinner />}>
-                <DoctorsPage />
-              </Suspense>
-            }
-            allowedRoles={["doctor", "user"]}
-          />
-        ),
-      },
-    ],
-  },
-]);
+    basename: import.meta.env.BASE_URL,
+  }
+);
 
 export default router;

@@ -6,6 +6,11 @@
   font-weight: 600;
 }
 
+.sidebar-link-center {
+  justify-content: center;
+  border-radius: 5px;
+}
+
 .active-link {
   background-color: #252c62;
   color: white;
