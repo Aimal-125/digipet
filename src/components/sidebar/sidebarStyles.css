@@ -2,7 +2,8 @@
   display: inline-flex;
   align-items: center;
   width: 100%;
-  padding: 16px;
+  padding: 0 16px;
+  height: 50px;
   font-weight: 600;
 }
 
@@ -14,6 +15,7 @@
 .active-link {
   background-color: #252c62;
   color: white;
+  border-radius: 6px;
 }
 
 .sidebar-icon-span {
@@ -31,7 +33,7 @@
 
 .highlight-line {
   display: inline-flex;
-  width: 9px;
+  width: 6px;
   height: 1px;
   background-color: white;
   border-radius: 0 7px 7px 0;
@@ -39,7 +41,7 @@
 
 .highlight-line-active {
   display: inline-flex;
-  width: 9px;
+  width: 6px;
   height: 100%;
   background-color: #252c62;
   border-radius: 0 7px 7px 0;

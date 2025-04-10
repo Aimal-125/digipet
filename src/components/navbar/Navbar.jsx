@@ -12,7 +12,9 @@ import { RiLockPasswordFill } from "react-icons/ri";
 
 import { MdLogout } from "react-icons/md";
 
-import { CgMenuGridR } from "react-icons/cg";
+import { RiMenuUnfold2Line } from "react-icons/ri";
+
+import { RiMenuUnfoldLine } from "react-icons/ri";
 
 import BellIcon from "/images/bell-icon.svg";
 
@@ -115,6 +117,7 @@ export default function Navbar() {
     };
   }, [logoutMenuActive]);
 
+  // eslint-disable-next-line no-unused-vars
   const handleSidebarCollapseBtnClick = () => {
     dispatch(setSidebarCollapse(!sidebarCollapse));
   };
@@ -169,7 +172,7 @@ export default function Navbar() {
             <span className="text-[#252C62]">Digi</span>
             <span className="text-[#83B830]">Pet</span>
           </p>
-          <div className="flex items-center justify-center">
+          {/* <div className="flex items-center justify-center">
             <button
               title={sidebarCollapse ? "Extend Menu" : "Collapse Menu"}
               className="w-[30px] h-[30px] cursor-pointer"
@@ -177,9 +180,13 @@ export default function Navbar() {
               aria-label="Collapse or Extend Sidebar Button"
               onClick={handleSidebarCollapseBtnClick}
             >
-              <CgMenuGridR size="30px" />
+              {sidebarCollapse ? (
+                <RiMenuUnfoldLine size="30px" />
+              ) : (
+                <RiMenuUnfold2Line size="30px" />
+              )}
             </button>
-          </div>
+          </div> */}
         </div>
         <div className="w-[80%] flex items-center">
           <div className="w-full pl-[16px]">
@@ -545,12 +552,12 @@ export default function Navbar() {
               </div>
               {/* sidebar navigation links start */}
 
-              <div className={`${isScrolling ? "scrolling" : ""} py-2`}>
+              <div className={`${isScrolling ? "scrolling" : ""} py-[20px]`}>
                 {accessibleSidebarItems.map((item) => {
                   const isActive = currentPathname === item.path;
 
                   return (
-                    <div key={item.id} className={`flex gap-2 px-2`}>
+                    <div key={item.id} className={`flex gap-2 pr-[20px]`}>
                       <span
                         className={`${
                           isActive ? "highlight-line-active-mobile-sidebar" : ""

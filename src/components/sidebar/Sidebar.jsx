@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 export default function Sidebar() {
   const location = useLocation();
 
+  // eslint-disable-next-line no-unused-vars
   const { sidebarCollapse } = useSelector((state) => state?.sidebar);
 
   const currentPathname = location.pathname;
@@ -19,9 +20,23 @@ export default function Sidebar() {
 
   const roles = ["admin", "doctor", "user"];
 
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1024);
+
   const accessibleSidebarItems = sidebarItems.filter((item) =>
     item.requiredRoles.some((requiredRole) => roles.includes(requiredRole))
   );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const sidebarElement = sidebarRef.current;
@@ -53,7 +68,7 @@ export default function Sidebar() {
     <div
       ref={sidebarRef}
       className={`${isScrolling ? "scrolling" : ""} ${
-        sidebarCollapse ? "sidebar-collapse" : ""
+        isSmallScreen ? "sidebar-collapse" : ""
       } sidebar`}
     >
       {accessibleSidebarItems.map((item) => {
@@ -63,20 +78,18 @@ export default function Sidebar() {
           <div
             key={item.id}
             className={`${
-              sidebarCollapse ? "w-[40px] h-[40px]" : ""
-            } flex gap-2`}
+              isSmallScreen ? "w-[50px] h-[50px]" : ""
+            } flex gap-[20px]`}
           >
             <span
               className={`${
-                !sidebarCollapse && isActive
-                  ? "highlight-line-active"
-                  : "hidden"
-              } ${sidebarCollapse ? "hidden" : "highlight-line"}`}
+                !isSmallScreen && isActive ? "highlight-line-active" : "hidden"
+              } ${isSmallScreen ? "hidden" : "highlight-line"}`}
             ></span>
             <Link
               to={item.path}
               className={`${isActive ? "active-link" : ""} ${
-                sidebarCollapse ? "sidebar-link-center" : ""
+                isSmallScreen ? "sidebar-link-center" : ""
               } sidebar-link`}
             >
               <span className="inline-flex items-center gap-2">
@@ -87,7 +100,7 @@ export default function Sidebar() {
                     alt="sidebar icon"
                   />
                 </span>
-                <span className={`${sidebarCollapse ? "hidden" : ""}`}>
+                <span className={`${isSmallScreen ? "hidden" : ""}`}>
                   {item.label}
                 </span>
               </span>

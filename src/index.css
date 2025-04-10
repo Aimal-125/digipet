@@ -34,15 +34,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: 0;
+  padding: 20px 20px 20px 0;
   transition: width 0.2s;
-}
-
-.sidebar-collapse {
-  width: 5%;
-  padding: 10px 0;
-  align-items: center;
-  gap: 10px;
 }
 
 .content-container {
@@ -53,8 +46,15 @@ body {
   transition: width 0.2s;
 }
 
+.sidebar-collapse {
+  width: 80px;
+  padding: 20px 0;
+  align-items: center;
+  gap: 10px;
+}
+
 .content-container-expand {
-  width: 95%;
+  width: 100%;
 }
 
 .inner-container {
@@ -67,7 +67,13 @@ body {
   overflow: auto;
 }
 
-@media screen and (max-width: 1000px) {
+.main-heading {
+  font-weight: 700;
+  font-size: 25px;
+  color: #252c62;
+}
+
+@media screen and (max-width: 650px) {
   .sidebar {
     display: none;
   }
