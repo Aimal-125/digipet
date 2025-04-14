@@ -128,7 +128,11 @@ export default function Sidebar() {
                     alt="sidebar icon"
                   />
                 </span>
-                <span className={`${isSmallScreen ? "hidden" : ""}`}>
+                <span
+                  className={`${
+                    isSmallScreen ? "hidden" : ""
+                  } max-[1311px]:text-[9px]`}
+                >
                   {item.label}
                 </span>
               </span>
