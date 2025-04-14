@@ -26,6 +26,34 @@ export default function Sidebar() {
     item.requiredRoles.some((requiredRole) => roles.includes(requiredRole))
   );
 
+  const [activeItemId, setActiveItemId] = useState(null);
+
+  useEffect(() => {
+    let bestMatch = null;
+
+    accessibleSidebarItems.forEach((item) => {
+      const isDashboard = item.label === "Dashboard";
+      let isMatch = false;
+
+      if (isDashboard) {
+        isMatch =
+          currentPathname === "/" || currentPathname.startsWith(item.path);
+      } else {
+        isMatch =
+          currentPathname === item.path ||
+          currentPathname.startsWith(item.path + "/");
+      }
+
+      if (isMatch) {
+        if (!bestMatch || item.path.length > bestMatch.path.length) {
+          bestMatch = item;
+        }
+      }
+    });
+
+    setActiveItemId(bestMatch?.id);
+  }, [currentPathname, accessibleSidebarItems]);
+
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth <= 1024);
@@ -72,7 +100,7 @@ export default function Sidebar() {
       } sidebar`}
     >
       {accessibleSidebarItems.map((item) => {
-        const isActive = currentPathname === item.path;
+        const isActive = activeItemId === item.id;
 
         return (
           <div

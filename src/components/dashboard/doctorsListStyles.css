@@ -1,0 +1,44 @@
+.doctors-list-container {
+  background-color: white;
+  width: 100%;
+  border-radius: 20px;
+  padding: 10px 0;
+}
+
+.doctors-list-container h2 {
+  padding: 10px 20px;
+}
+
+.doctors-list-table {
+  width: 100%;
+}
+
+.doctors-list-table th {
+  text-align: left;
+  font-weight: 600;
+  background-color: #f7f6fe;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.doctors-list-table td {
+  color: #333;
+  padding: 10px 20px;
+  font-size: 12px;
+}
+
+.doctors-list-table tr:not(thead tr) {
+  cursor: pointer;
+}
+
+.doctors-list-table tr:hover {
+  background-color: #eee;
+}
+
+.mobile-doctors-list-container {
+  font-size: 12px;
+}
+
+.mobile-doctors-list-container div > div:first-child {
+  font-weight: bold;
+}

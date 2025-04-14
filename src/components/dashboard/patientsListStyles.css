@@ -1,0 +1,36 @@
+.patients-list-container {
+  background-color: white;
+  width: 100%;
+  border-radius: 20px;
+  padding: 10px 0;
+}
+
+.patients-list-container h2 {
+  padding: 10px 20px;
+}
+
+.patients-list-table {
+  width: 100%;
+}
+
+.patients-list-table th {
+  text-align: left;
+  font-weight: 600;
+  background-color: #f7f6fe;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.patients-list-table td {
+  color: #333;
+  padding: 10px 20px;
+  font-size: 12px;
+}
+
+.patients-list-table tr:not(thead tr) {
+  cursor: pointer;
+}
+
+.patients-list-table tr:hover {
+  background-color: #eee;
+}

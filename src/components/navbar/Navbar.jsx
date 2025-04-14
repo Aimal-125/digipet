@@ -64,6 +64,34 @@ export default function Navbar() {
     item.requiredRoles.some((requiredRole) => roles.includes(requiredRole))
   );
 
+  const [activeItemId, setActiveItemId] = useState(null);
+
+  useEffect(() => {
+    let bestMatch = null;
+
+    accessibleSidebarItems.forEach((item) => {
+      const isDashboard = item.label === "Dashboard";
+      let isMatch = false;
+
+      if (isDashboard) {
+        isMatch =
+          currentPathname === "/" || currentPathname.startsWith(item.path);
+      } else {
+        isMatch =
+          currentPathname === item.path ||
+          currentPathname.startsWith(item.path + "/");
+      }
+
+      if (isMatch) {
+        if (!bestMatch || item.path.length > bestMatch.path.length) {
+          bestMatch = item;
+        }
+      }
+    });
+
+    setActiveItemId(bestMatch?.id);
+  }, [currentPathname, accessibleSidebarItems]);
+
   useEffect(() => {
     const sidebarElement = mobileMenuSidebarRef.current;
 
@@ -554,7 +582,7 @@ export default function Navbar() {
 
               <div className={`${isScrolling ? "scrolling" : ""} py-[20px]`}>
                 {accessibleSidebarItems.map((item) => {
-                  const isActive = currentPathname === item.path;
+                  const isActive = activeItemId === item.id;
 
                   return (
                     <div key={item.id} className={`flex gap-2 pr-[20px]`}>
@@ -568,6 +596,7 @@ export default function Navbar() {
                         className={`${
                           isActive ? "active-link" : ""
                         } sidebar-link`}
+                        onClick={() => setMobileMenuActive(false)}
                       >
                         <span className="inline-flex items-center gap-2">
                           <span className="sidebar-icon-span">

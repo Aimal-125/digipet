@@ -13,6 +13,7 @@
   box-shadow: 0 0 5px #ccc;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
 .logout-menu div:not(:last-of-type) {

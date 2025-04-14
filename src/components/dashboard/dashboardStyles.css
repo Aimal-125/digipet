@@ -1,0 +1,22 @@
+.dashboard-data-1-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px;
+}
+
+.dashboard-data-1-shadow {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 1440px) {
+  .dashboard-data-1-container {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .dashboard-data-1-container {
+    grid-template-columns: auto;
+  }
+}
