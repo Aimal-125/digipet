@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 
+import BulbGif from "/images/bulb.gif";
+
 const NotFoundPage = () => {
   return (
     <div style={styles.container}>
@@ -7,7 +9,7 @@ const NotFoundPage = () => {
         {/* <h1 style={styles.errorCode}>404</h1> */}
         <div className="mb-[40px]">
           <img
-            src={"./images/bulb.gif"}
+            src={BulbGif}
             alt="404 not found"
             style={{
               width: "100%",
