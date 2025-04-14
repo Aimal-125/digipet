@@ -208,14 +208,14 @@ export default function AppointmentsPage() {
 
         {/* filter buttons start */}
 
-        <div className="flex items-center gap-3 max-[751px]:flex-col max-[751px]:items-start">
+        <div className="flex items-center gap-3 overflow-auto filterBtn-container">
           {filterButtons?.map((button, index) => {
             return (
               <div className="" key={index}>
                 <button
                   className={`${
                     activeBtn === index ? "active-btn" : ""
-                  } border border-[#4c63bd] text-[#4c63bd] font-[600] max-[872px]:text-[12px] inline-flex items-center justify-between gap-2 px-[11px] py-[5px] rounded-[45px] cursor-pointer transition-colors`}
+                  } border border-[#4c63bd] text-[#4c63bd] font-[600] inline-flex items-center justify-between gap-2 px-[11px] py-[5px] rounded-[45px] cursor-pointer transition-colors`}
                   type="button"
                   onClick={() => {
                     setActiveBtn(index);

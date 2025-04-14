@@ -18,10 +18,22 @@ const LoginPage = Loader(lazy(() => import("../components/login/Login")));
 
 const NotFoundPage = Loader(lazy(() => import("../pages/Notfound")));
 
+const ProfileSettingsPage = lazy(() =>
+  import("../components/profile-settings/ProfileSettings")
+);
+
+const UpdatePasswordPage = lazy(() =>
+  import("../components/update-password/UpdatePasswrod")
+);
+
 const DashboardPage = lazy(() => import("../components/dashboard/Dashboard"));
 
 const PetParentsPage = lazy(() =>
   import("../components/pet-parents/PetParents")
+);
+
+const PetParentsProfilePage = lazy(() =>
+  import("../components/pet-parents/PetParentsProfile")
 );
 
 const DoctorsPage = lazy(() => import("../components/doctors/Doctors"));
@@ -58,6 +70,7 @@ const router = createBrowserRouter(
       path: "/login",
       element: <LoginPage />,
     },
+
     {
       path: "/",
       element: <ProtectedRoute element={<App />} />,
@@ -81,6 +94,15 @@ const router = createBrowserRouter(
           element: (
             <RoleProtectedRoute
               element={<PetParentsPage />}
+              allowedRoles={["doctor", "user"]}
+            />
+          ),
+        },
+        {
+          path: "pet-parents/profile/:id",
+          element: (
+            <RoleProtectedRoute
+              element={<PetParentsProfilePage />}
               allowedRoles={["doctor", "user"]}
             />
           ),
@@ -147,6 +169,14 @@ const router = createBrowserRouter(
               allowedRoles={["admin"]}
             />
           ),
+        },
+        {
+          path: "profile-settings",
+          element: <ProfileSettingsPage />,
+        },
+        {
+          path: "update-password",
+          element: <UpdatePasswordPage />,
         },
       ],
     },

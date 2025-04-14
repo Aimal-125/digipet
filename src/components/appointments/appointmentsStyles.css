@@ -1,3 +1,22 @@
 .active-btn {
   background-color: #4c63bd;
 }
+
+@media screen and (max-width: 860px) {
+  .filterBtn-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+  }
+
+  .filterBtn-container div button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .filterBtn-container {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
+}

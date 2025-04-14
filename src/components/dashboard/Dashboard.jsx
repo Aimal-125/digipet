@@ -621,7 +621,7 @@ export default function DashboardPage() {
           {isSmallScreen ? (
             <div className="patients-list-container">
               <h2 className="text-[#212529] font-[600] text-[20px]">
-                Patients List
+                Pet Parents List
               </h2>
               <div className="flex flex-col gap-5">
                 {patientsData?.map((patient, index) => {
@@ -650,7 +650,7 @@ export default function DashboardPage() {
                         <div className="text-[#333]">Name</div>
                         <div>
                           <Link
-                            to="#"
+                            to={`/pet-parents/profile/${patient?._id}`}
                             className="underline hover:text-blue-500 text-[#333]"
                           >
                             {patient?.name}
@@ -690,7 +690,7 @@ export default function DashboardPage() {
           ) : (
             <div className="patients-list-container">
               <h2 className="text-[#212529] font-[600] text-[20px]">
-                Patients List
+                Pet Parents List
               </h2>
               <table className="patients-list-table">
                 <thead>
@@ -703,7 +703,12 @@ export default function DashboardPage() {
                 </thead>
                 <tbody>
                   {patientsData.map((patient, index) => (
-                    <tr key={index}>
+                    <tr
+                      key={index}
+                      onClick={() => {
+                        navigate(`/pet-parents/profile/${patient?._id}`);
+                      }}
+                    >
                       <td>
                         <span className="inline-flex items-center gap-2">
                           <span className="w-[30px] h-[30px] rounded-full">

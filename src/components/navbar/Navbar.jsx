@@ -341,7 +341,14 @@ export default function Navbar() {
                     </span>
                   </div>
                   <div>
-                    <button type="button" className="logout-menu-btn">
+                    <button
+                      type="button"
+                      className="logout-menu-btn"
+                      onClick={() => {
+                        navigate("/profile-settings");
+                        setLogoutMenuActive(false);
+                      }}
+                    >
                       <span>
                         <CgProfile />
                       </span>
@@ -349,7 +356,14 @@ export default function Navbar() {
                     </button>
                   </div>
                   <div>
-                    <button type="button" className="logout-menu-btn">
+                    <button
+                      type="button"
+                      className="logout-menu-btn"
+                      onClick={() => {
+                        navigate("/update-password");
+                        setLogoutMenuActive(false);
+                      }}
+                    >
                       <span>
                         <RiLockPasswordFill />
                       </span>
@@ -544,7 +558,15 @@ export default function Navbar() {
                           </span>
                         </div>
                         <div>
-                          <button type="button" className="logout-menu-btn">
+                          <button
+                            type="button"
+                            className="logout-menu-btn"
+                            onClick={() => {
+                              navigate("/profile-settings");
+                              setLogoutMenuActive(false);
+                              setMobileMenuActive(false);
+                            }}
+                          >
                             <span>
                               <CgProfile />
                             </span>
@@ -552,7 +574,15 @@ export default function Navbar() {
                           </button>
                         </div>
                         <div>
-                          <button type="button" className="logout-menu-btn">
+                          <button
+                            type="button"
+                            className="logout-menu-btn"
+                            onClick={() => {
+                              navigate("/update-password");
+                              setLogoutMenuActive(false);
+                              setMobileMenuActive(false);
+                            }}
+                          >
                             <span>
                               <RiLockPasswordFill />
                             </span>
