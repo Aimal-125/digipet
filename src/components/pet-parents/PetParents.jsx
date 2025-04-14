@@ -23,7 +23,6 @@ export default function PetParentsPage() {
     },
     {
       label: "Completed",
-      currency: "$",
       totalValue: 89000,
       icon: "./images/dashboard/appointments-icon.svg",
       status: "Down",

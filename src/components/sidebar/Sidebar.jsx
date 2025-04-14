@@ -107,7 +107,7 @@ export default function Sidebar() {
             key={item.id}
             className={`${
               isSmallScreen ? "w-[50px] h-[50px]" : ""
-            } flex gap-[20px]`}
+            } flex gap-[20px] max-[1311px]:gap-[10px]`}
           >
             <span
               className={`${
@@ -131,7 +131,7 @@ export default function Sidebar() {
                 <span
                   className={`${
                     isSmallScreen ? "hidden" : ""
-                  } max-[1311px]:text-[9px]`}
+                  } max-[1311px]:text-[14px]`}
                 >
                   {item.label}
                 </span>

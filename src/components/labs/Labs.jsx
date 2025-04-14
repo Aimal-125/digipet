@@ -22,7 +22,6 @@ export default function LabsPage() {
     },
     {
       label: "Completed",
-      currency: "$",
       totalValue: 89000,
       icon: "./images/dashboard/appointments-icon.svg",
       status: "Down",

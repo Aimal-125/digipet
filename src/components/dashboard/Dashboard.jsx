@@ -83,7 +83,6 @@ export default function DashboardPage() {
     },
     {
       label: "Appointments",
-      currency: "$",
       totalValue: 89000,
       icon: "./images/dashboard/appointments-icon.svg",
       status: "Down",
@@ -92,6 +91,7 @@ export default function DashboardPage() {
     },
     {
       label: "Admin Profit",
+      currency: "$",
       totalValue: 2040,
       icon: "./images/dashboard/admin-profit-icon.svg",
       status: "Up",

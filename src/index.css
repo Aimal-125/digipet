@@ -73,6 +73,18 @@ body {
   color: #252c62;
 }
 
+@media screen and (max-width: 1310px) {
+  .sidebar {
+    padding: 20px 10px 20px 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    padding: 10px 0px 10px 0;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .sidebar {
     display: none;

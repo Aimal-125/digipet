@@ -89,3 +89,19 @@
 }
 
 /* sidebar scrollbar css styles end */
+
+@media screen and (max-width: 1310px) {
+  .sidebar-link {
+    padding: 0 10px;
+  }
+
+  .sidebar-icon-span {
+    width: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebar-icon-span {
+    width: 22px;
+  }
+}

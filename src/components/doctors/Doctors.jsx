@@ -23,7 +23,6 @@ export default function DoctorsPage() {
     },
     {
       label: "Verified Doctors",
-      currency: "$",
       totalValue: 89000,
       icon: "./images/dashboard/appointments-icon.svg",
       status: "Down",
