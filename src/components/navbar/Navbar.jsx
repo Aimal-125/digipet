@@ -121,6 +121,8 @@ export default function Navbar() {
   const handleLogout = () => {
     localStorage.setItem("loggedIn", JSON.stringify(false));
 
+    localStorage.removeItem("roles");
+
     navigate(0);
     navigate("/login");
   };
