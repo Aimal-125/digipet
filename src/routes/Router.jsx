@@ -60,6 +60,32 @@ const LabTestsCategoriesPage = lazy(() =>
   import("../components/lab-tests-categories/LabTestsCategories")
 );
 
+const AllSpecialitiesPage = lazy(() =>
+  import("../components/all-specialities/AllSpecialities")
+);
+
+const AllServicesPage = lazy(() =>
+  import("../components/all-services/AllServices")
+);
+
+const AllHospitalsPage = lazy(() =>
+  import("../components/all-hospitals/AllHospitals")
+);
+
+const NotificationsPage = lazy(() =>
+  import("../components/notifications/Notifications")
+);
+
+const InformationsPage = lazy(() =>
+  import("../components/informations/Informations")
+);
+
+const SupportPage = lazy(() => import("../components/support/Support"));
+
+const AdminUsersPage = lazy(() => import("../components/admin/AdminUsers"));
+
+const SettingsPage = lazy(() => import("../components/settings/Settings"));
+
 const router = createBrowserRouter(
   [
     {
@@ -166,6 +192,78 @@ const router = createBrowserRouter(
           element: (
             <RoleProtectedRoute
               element={<LabTestsCategoriesPage />}
+              allowedRoles={["admin"]}
+            />
+          ),
+        },
+        {
+          path: "all-services",
+          element: (
+            <RoleProtectedRoute
+              element={<AllServicesPage />}
+              allowedRoles={["admin"]}
+            />
+          ),
+        },
+        {
+          path: "all-specialities",
+          element: (
+            <RoleProtectedRoute
+              element={<AllSpecialitiesPage />}
+              allowedRoles={["admin"]}
+            />
+          ),
+        },
+        {
+          path: "all-hospitals",
+          element: (
+            <RoleProtectedRoute
+              element={<AllHospitalsPage />}
+              allowedRoles={["admin"]}
+            />
+          ),
+        },
+        {
+          path: "notifications",
+          element: (
+            <RoleProtectedRoute
+              element={<NotificationsPage />}
+              allowedRoles={["admin"]}
+            />
+          ),
+        },
+        {
+          path: "informations",
+          element: (
+            <RoleProtectedRoute
+              element={<InformationsPage />}
+              allowedRoles={["admin"]}
+            />
+          ),
+        },
+        {
+          path: "support",
+          element: (
+            <RoleProtectedRoute
+              element={<SupportPage />}
+              allowedRoles={["admin"]}
+            />
+          ),
+        },
+        {
+          path: "admin-users",
+          element: (
+            <RoleProtectedRoute
+              element={<AdminUsersPage />}
+              allowedRoles={["admin"]}
+            />
+          ),
+        },
+        {
+          path: "settings",
+          element: (
+            <RoleProtectedRoute
+              element={<SettingsPage />}
               allowedRoles={["admin"]}
             />
           ),

@@ -265,6 +265,10 @@ export default function AppointmentsPage() {
             actions={true}
             actionTypes={[
               {
+                action: "view",
+                icon: "./images/view-icon.svg",
+              },
+              {
                 action: "edit",
                 icon: "./images/edit-icon.svg",
               },

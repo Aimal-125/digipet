@@ -695,7 +695,7 @@ export default function DashboardPage() {
               <table className="patients-list-table">
                 <thead>
                   <tr>
-                    <th>Patient Name</th>
+                    <th>Parent Name</th>
                     <th>Phone</th>
                     <th>Last Visit</th>
                     <th>Fee</th>

@@ -1,0 +1,68 @@
+.chat-box-overall {
+  height: calc(100vh - 160px);
+}
+
+.message-box {
+  height: calc(100vh - 342px);
+  overflow: auto;
+}
+
+.admin-message {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+.user-message {
+  margin: 20px 0;
+  width: fit-content;
+  border-radius: 14px 0 14px 14px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.options-box {
+  gap: 10px;
+}
+
+.send-box {
+  gap: 10px;
+  width: 100%;
+}
+
+.options-box div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.options-box div button {
+  cursor: pointer;
+}
+
+.send-box div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.send-box div button {
+  cursor: pointer;
+}
+
+.message-unseen {
+  filter: invert(100%) brightness(200%) contrast(100%) grayscale(100%);
+}
+
+.message-box-mobile {
+  height: calc(100vh - 380px);
+  overflow: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .main-chat-box {
+    width: 100%;
+  }
+}

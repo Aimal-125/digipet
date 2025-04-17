@@ -119,7 +119,7 @@ function ResponsiveTable({
                               })}
                             </div>
                           ) : (
-                            <span
+                            <div
                               style={{
                                 wordBreak: "break-all",
                                 fontWeight: "300",
@@ -127,7 +127,7 @@ function ResponsiveTable({
                               }}
                             >
                               {cellValue}
-                            </span>
+                            </div>
                           )}
                         </div>
                       </div>
@@ -148,7 +148,7 @@ function ResponsiveTable({
               mainHeading ? "mb-[20px]" : ""
             } flex max-[572px]:flex-col items-center gap-[20px]`}
           >
-            <h2 className="m-0 font-[700] text-[24px] text-[#202224] py-0 px-[20px]">
+            <h2 className="m-0 font-[700] text-[20px] text-[#202224] py-0 px-[20px]">
               {mainHeading}
             </h2>
 
