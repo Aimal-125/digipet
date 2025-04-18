@@ -1,13 +1,26 @@
 import { IoSearch } from "react-icons/io5";
 
 import "./supportStyles.css";
-import { useEffect, useRef, useState } from "react";
+
+import { useEffect, useState } from "react";
+
 import { FaArrowLeft } from "react-icons/fa";
+
+import DesktopVerticalDots from "./DesktopVerticalDots";
+
+import DesktopHorizontalDots from "./DesktopHorizontalDots";
+import MobileVerticalDots from "./MobileVerticalDots";
+import MobileHorizontalDots from "./MobileHorizontalDots";
+import DesktopSendVerticalDots from "./DesktopSendVerticalDots";
+import MobileSendVerticalDots from "./MobileSendVerticalDots";
+import EmojiPickerButton from "./EmojiPickerButton";
 
 export default function SupportPage() {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1024);
 
   const [userId, setUserId] = useState("");
+
+  const [currentMessage, setCurrentMessage] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -20,19 +33,6 @@ export default function SupportPage() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const [mainVerticalDotsActive, setMainVerticalDotsActive] = useState(false);
-
-  const [messageHorizontalDotsActive, setMessageHorizontalDotsActive] =
-    useState(false);
-
-  const mainVerticalDotsRef = useRef(null);
-
-  const mainVerticalDotsButtonRef = useRef(null);
-
-  const messageHorizontalDotsRef = useRef(null);
-
-  const messageHorizontalDotsButtonRef = useRef(null);
 
   const usersData = [
     {
@@ -73,81 +73,27 @@ export default function SupportPage() {
     },
   ];
 
-  const verticalMainDotsOptions = [
-    {
-      name: "Close Chat",
-    },
-    {
-      name: "Clear Message",
-    },
-    {
-      name: "Delete Chat",
-    },
-    {
-      name: "Report",
-    },
-    {
-      name: "Block",
-    },
-  ];
+  // Function to handle emoji selection and add it to the input
+  const handleEmojiSelect = (emoji) => {
+    setCurrentMessage((prevMessage) => prevMessage + emoji);
+  };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        mainVerticalDotsActive &&
-        mainVerticalDotsRef.current &&
-        !mainVerticalDotsRef.current.contains(event.target) &&
-        mainVerticalDotsButtonRef.current &&
-        !mainVerticalDotsButtonRef.current.contains(event.target)
-      ) {
-        setMainVerticalDotsActive(false);
-      }
-    };
+  // Function to handle sending the message (you'll need to implement the actual send logic)
+  const handleSendMessage = () => {
+    if (currentMessage.trim()) {
+      console.log("Sending message:", currentMessage);
+      // TODO: Add logic here to send the message, e.g., via an API call
+      setCurrentMessage(""); // Clear the input after sending
+    }
+  };
 
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [mainVerticalDotsActive]);
-
-  const horizontalMessageDotsOptions = [
-    {
-      name: "Message Info",
-    },
-    {
-      name: "Reply",
-    },
-    {
-      name: "React",
-    },
-    {
-      name: "Forward",
-    },
-    {
-      name: "Delete",
-    },
-  ];
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        messageHorizontalDotsActive &&
-        messageHorizontalDotsRef.current &&
-        !messageHorizontalDotsRef.current.contains(event.target) &&
-        messageHorizontalDotsButtonRef.current &&
-        !messageHorizontalDotsButtonRef.current.contains(event.target)
-      ) {
-        setMessageHorizontalDotsActive(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [messageHorizontalDotsActive]);
+  // Handle pressing Enter key to send message
+  const handleInputKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent default form submission if applicable
+      handleSendMessage();
+    }
+  };
 
   return (
     <>
@@ -263,44 +209,7 @@ export default function SupportPage() {
                       <p className="text-[#4C63BD]">Online</p>
                     </div>
                   </div>
-                  <div className="relative flex items-center justify-center">
-                    <button
-                      ref={mainVerticalDotsButtonRef}
-                      type="button"
-                      className="cursor-pointer bg-gray-100 w-[30px] h-[30px] rounded-full inline-flex justify-center items-center"
-                      aria-label="menu"
-                      onClick={() => {
-                        setMainVerticalDotsActive(!mainVerticalDotsActive);
-                      }}
-                    >
-                      <img
-                        src="./images/support/vertical-dots.svg"
-                        alt="icon"
-                      />
-                    </button>
-                    {mainVerticalDotsActive ? (
-                      <div
-                        ref={mainVerticalDotsRef}
-                        className="absolute top-[100%] z-10 border border-[#AEC8E2] right-0 w-[200px] bg-white rounded-md p-[10px]"
-                      >
-                        {verticalMainDotsOptions?.map((value, index) => {
-                          return (
-                            <div key={index}>
-                              <button
-                                type="button"
-                                aria-label={`${value?.name} button`}
-                                className="p-[5px] cursor-pointer w-full text-left text-[#252C62]"
-                              >
-                                {value?.name}
-                              </button>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
+                  <DesktopVerticalDots />
                 </div>
 
                 {/* chat header end */}
@@ -314,48 +223,7 @@ export default function SupportPage() {
                         <p>Andrea Kearns</p>
                         <p>8:16 PM</p>
                       </div>
-                      <div className="relative flex items-center justify-center">
-                        <button
-                          ref={messageHorizontalDotsButtonRef}
-                          type="button"
-                          aria-label="options button"
-                          className="cursor-pointer bg-gray-100 w-[30px] h-[30px] rounded-full inline-flex justify-center items-center"
-                          onClick={() => {
-                            setMessageHorizontalDotsActive(
-                              !messageHorizontalDotsActive
-                            );
-                          }}
-                        >
-                          <img
-                            src="./images/support/horizontal-dots.svg"
-                            alt="icon"
-                          />
-                        </button>
-                        {messageHorizontalDotsActive ? (
-                          <div
-                            ref={messageHorizontalDotsRef}
-                            className="absolute top-[100%] z-10 border border-[#AEC8E2] right-0 w-[200px] bg-white rounded-md p-[10px]"
-                          >
-                            {horizontalMessageDotsOptions?.map(
-                              (value, index) => {
-                                return (
-                                  <div key={index}>
-                                    <button
-                                      type="button"
-                                      aria-label={`${value?.name} button`}
-                                      className="p-[5px] cursor-pointer w-full text-left text-[#252C62]"
-                                    >
-                                      {value?.name}
-                                    </button>
-                                  </div>
-                                );
-                              }
-                            )}
-                          </div>
-                        ) : (
-                          ""
-                        )}
-                      </div>
+                      <DesktopHorizontalDots />
                       <div>
                         <img
                           src="./images/support/girl.svg"
@@ -378,21 +246,16 @@ export default function SupportPage() {
 
                   {/* send message box starts */}
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 relative">
+                    <EmojiPickerButton onEmojiClick={handleEmojiSelect}>
+                      <img
+                        src="./images/support/smiley.svg"
+                        alt="Open emoji picker"
+                      />
+                    </EmojiPickerButton>
                     <div className="flex items-center options-box">
-                      <div>
-                        <button type="button" className="inline-block">
-                          <img
-                            src="./images/support/vertical-dots.svg"
-                            alt="icon"
-                          />
-                        </button>
-                      </div>
-                      <div>
-                        <button type="button" className="inline-block">
-                          <img src="./images/support/smiley.svg" alt="icon" />
-                        </button>
-                      </div>
+                      <DesktopSendVerticalDots />
+
                       <div>
                         <button type="button" className="inline-block">
                           <img src="./images/support/mic.svg" alt="icon" />
@@ -405,6 +268,9 @@ export default function SupportPage() {
                           type="text"
                           className="border border-[#AEC8E2] rounded-[10px] w-full py-2 px-4"
                           placeholder="Type Your Message Here..."
+                          value={currentMessage} // Bind input value to state
+                          onChange={(e) => setCurrentMessage(e.target.value)} // Update state on change
+                          onKeyDown={handleInputKeyPress} // Handle Enter key
                         />
                       </div>
                       <div>
@@ -537,18 +403,7 @@ export default function SupportPage() {
                         <p className="text-[#4C63BD]">Online</p>
                       </div>
                     </div>
-                    <div>
-                      <button
-                        type="button"
-                        className="cursor-pointer"
-                        aria-label="menu"
-                      >
-                        <img
-                          src="./images/support/vertical-dots.svg"
-                          alt="icon"
-                        />
-                      </button>
-                    </div>
+                    <MobileVerticalDots />
                   </div>
 
                   {/* chat header end */}
@@ -562,18 +417,7 @@ export default function SupportPage() {
                           <p>Andrea Kearns</p>
                           <p>8:16 PM</p>
                         </div>
-                        <div>
-                          <button
-                            type="button"
-                            aria-label="options button"
-                            className="cursor-pointer"
-                          >
-                            <img
-                              src="./images/support/horizontal-dots.svg"
-                              alt="icon"
-                            />
-                          </button>
-                        </div>
+                        <MobileHorizontalDots />
                         <div>
                           <img
                             src="./images/support/girl.svg"
@@ -598,20 +442,15 @@ export default function SupportPage() {
                     {/* send message box starts */}
 
                     <div className="flex items-center gap-3">
+                      <EmojiPickerButton onEmojiClick={handleEmojiSelect}>
+                        <img
+                          src="./images/support/smiley.svg"
+                          alt="Open emoji picker"
+                        />
+                      </EmojiPickerButton>
                       <div className="flex items-center options-box">
-                        <div>
-                          <button type="button" className="inline-block">
-                            <img
-                              src="./images/support/vertical-dots.svg"
-                              alt="icon"
-                            />
-                          </button>
-                        </div>
-                        <div>
-                          <button type="button" className="inline-block">
-                            <img src="./images/support/smiley.svg" alt="icon" />
-                          </button>
-                        </div>
+                        <MobileSendVerticalDots />
+
                         <div>
                           <button type="button" className="inline-block">
                             <img src="./images/support/mic.svg" alt="icon" />
@@ -624,6 +463,9 @@ export default function SupportPage() {
                             type="text"
                             className="border border-[#AEC8E2] rounded-[10px] w-full py-2 px-4"
                             placeholder="Type Your Message Here..."
+                            value={currentMessage} // Bind input value to state
+                            onChange={(e) => setCurrentMessage(e.target.value)} // Update state on change
+                            onKeyDown={handleInputKeyPress} // Handle Enter key
                           />
                         </div>
                         <div>
