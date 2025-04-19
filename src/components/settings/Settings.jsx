@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 import * as yup from "yup";
 import returnErrorMsg from "../../utils/returnErrorMessage";
-import LayoutDiv from "./form-components/LayoutDiv";
+import LayoutDiv from "../global/form-components/LayoutDiv";
 
 export default function SettingsPage() {
   const initValues = {
@@ -23,7 +23,7 @@ export default function SettingsPage() {
     whatsAppSupport: yup.string().required("Required"),
   });
 
-  const handleSettingsSubmit = async (values, { setSubmitting }) => {
+  const handleSettingsSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
 
     try {
@@ -36,6 +36,7 @@ export default function SettingsPage() {
       toast.error(returnErrorMsg(error));
     } finally {
       setSubmitting(false);
+      resetForm();
       console.log(values);
     }
   };
@@ -69,9 +70,10 @@ export default function SettingsPage() {
                         </label>
                         <input
                           className="border border-[#AEC8E2] w-full px-4 py-2 rounded-md"
-                          type="whatsAppSupport"
+                          type="text"
                           name="whatsAppSupport"
                           onChange={formik.handleChange}
+                          value={formik.values.whatsAppSupport}
                           form={formik}
                         />
                       </div>
@@ -91,9 +93,10 @@ export default function SettingsPage() {
                         </label>
                         <input
                           className="border border-[#AEC8E2] w-full px-4 py-2 rounded-md"
-                          type="whatsAppGroupLink"
+                          type="text"
                           name="whatsAppGroupLink"
                           onChange={formik.handleChange}
+                          value={formik.values.whatsAppGroupLink}
                           form={formik}
                         />
                       </div>
@@ -114,6 +117,7 @@ export default function SettingsPage() {
                         type="email"
                         name="email"
                         onChange={formik.handleChange}
+                        value={formik.values.email}
                         form={formik}
                       />
                     </div>

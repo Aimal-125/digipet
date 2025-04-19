@@ -66,3 +66,13 @@
     width: 100%;
   }
 }
+
+@media screen and (max-height: 500px) {
+  .chat-box-overall {
+    min-height: 100vh;
+  }
+
+  .message-box-mobile {
+    min-height: calc(100vh - 215px);
+  }
+}

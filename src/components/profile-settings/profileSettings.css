@@ -1,0 +1,47 @@
+.info-span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgba(0, 0, 255, 0.5);
+}
+
+.info-hover {
+  position: absolute;
+  bottom: 153%;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  width: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgba(0, 0, 255, 0.5);
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 7px;
+  padding: 7px 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.info-hover .triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid rgba(0, 0, 255, 0.5);
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+.info-span:hover .info-hover {
+  opacity: 1;
+  visibility: visible;
+}

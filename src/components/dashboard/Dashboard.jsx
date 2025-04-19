@@ -316,10 +316,15 @@ export default function DashboardPage() {
           <h1 className="main-heading">Dashboard</h1>
           <div className="max-[360px]:w-full">
             <input
-              className="border border-[#4C63BD] text-[#4C63BD] px-[12px] py-[7px] rounded-[8px] max-[360px]:w-full"
+              className="border border-[#4C63BD] text-[#4C63BD] px-[12px] py-[7px] rounded-[8px] max-[360px]:w-full cursor-pointer"
               type="date"
               aria-label="select date"
               onChange={(e) => setDate(e.target.value)}
+              onFocus={(e) => {
+                if ("showPicker" in e.target) {
+                  e.target.showPicker();
+                }
+              }}
             />
           </div>
         </div>
